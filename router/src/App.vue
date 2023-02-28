@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import {env} from "@/types/helper";
-console.log(env)
+import userApi from "@/apis/userApi";
+
+const res = await userApi.info()
+console.log(res.result, 'dsd')
 </script>
 
 <template>
@@ -8,7 +10,7 @@ console.log(env)
   <h1 class="text-3xl font-bold underline">
     Hello world!
   </h1>
-  <router-view />
+    <router-view />
 </template>
 
 <style scoped>
