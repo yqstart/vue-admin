@@ -1,7 +1,4 @@
 import { RouteRecordRaw } from "vue-router";
-import { Component } from "vue";
-import { ModuleNode } from "vite";
-import router from "@/router/index";
 
 const layouts = import.meta.glob("@/layouts/*.vue", { eager: true });
 const views = import.meta.glob("@/views/**/*.vue", { eager: true });
@@ -13,7 +10,6 @@ const getRoutes = () => {
     route.children = getChildrenRoutes(route);
     layoutRoutes.push(route);
   });
-  console.log(layoutRoutes)
   return layoutRoutes;
 };
 const getRouteByModule = (
