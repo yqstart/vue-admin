@@ -1,8 +1,10 @@
 import { RouteRecordRaw } from "vue-router";
 import { Component } from "vue";
+import { ModuleNode } from "vite";
+import router from "@/router/index";
 
-const layouts = import.meta.glob("@/layouts/*.vue");
-const views = import.meta.glob("@/views/**/*.vue");
+const layouts = import.meta.glob("@/layouts/*.vue", { eager: true });
+const views = import.meta.glob("@/views/**/*.vue", { eager: true });
 
 const getRoutes = () => {
   const layoutRoutes = [] as RouteRecordRaw[];
@@ -11,11 +13,12 @@ const getRoutes = () => {
     route.children = getChildrenRoutes(route);
     layoutRoutes.push(route);
   });
+  console.log(layoutRoutes)
   return layoutRoutes;
 };
 const getRouteByModule = (
   file: string,
-  module: Component,
+  module: any,
   isChildren: boolean = false
 ) => {
   // const name = file.replace(/.+layouts\/|\.+views\/|\.vue/gi, '')
@@ -25,9 +28,9 @@ const getRouteByModule = (
   const route = {
     name: name?.replace("/", "."),
     path: `/${name}`,
-    component: module,
+    component: module.default,
   } as RouteRecordRaw;
-  return route;
+  return Object.assign(route, module.default?.route);
 };
 // 获取子路由
 const getChildrenRoutes = (layoutRoute: RouteRecordRaw) => {

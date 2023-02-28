@@ -1,11 +1,11 @@
-<template>
-<div>user</div>
-</template>
+<template></template>
+<script setup lang="ts"></script>
 
-<script setup>
-
+<style scoped></style>
+<script>
+export default {
+  route: {
+    path: "/User",
+  },
+};
 </script>
-
-<style scoped>
-
-</style>
