@@ -23,15 +23,11 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import RInput from "@/components/form/RInput.vue";
-import RButton from "@/components/form/RButton.vue";
-import RLink from "@/components/form/RLink.vue";
+<script setup>
+// import RInput from "@/components/form/RInput.vue";
+// import RButton from "@/components/form/RButton.vue";
+// import RLink from "@/components/form/RLink.vue";
 
-export default defineComponent({
-  components: {RLink, RButton, RInput },
-});
 </script>
 
 <style scoped lang="scss">
