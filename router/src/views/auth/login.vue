@@ -58,6 +58,7 @@
 import { reactive } from "vue";
 import v from "@/plugins/validate";
 import userApi from "@/apis/userApi";
+import { store } from "@/utils";
 const { Form, Field, ErrorMessage } = v;
 
 const form = reactive<{ account: number | string; password: string }>({
@@ -65,8 +66,13 @@ const form = reactive<{ account: number | string; password: string }>({
   password: "",
 });
 const onSubmit = async (values: any) => {
-  const { result: { token }} = await userApi.login(values);
-  console.log(token, 'dsd')
+  const {
+    result: { token },
+  } = await userApi.login(values);
+  store.set("token", {
+    expire: 100,
+    token,
+  });
 };
 </script>
 
