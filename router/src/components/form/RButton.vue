@@ -1,5 +1,5 @@
 <template>
-  <button class="login-button mt-6">登录</button>
+  <button class="login-button mt-5">登录</button>
 </template>
 
 <script></script>

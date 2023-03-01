@@ -5,7 +5,7 @@ yup.setLocale({
     required: "${label}必须输入",
   },
   string: {
-    email: "邮箱格式错误",
+    email: "邮箱格式错误"
   },
 });
 export default yup;
