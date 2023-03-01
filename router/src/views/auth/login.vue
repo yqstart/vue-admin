@@ -12,7 +12,7 @@
     class="bg-slate-300 h-screen flex justify-center items-start md:items-center p-5"
   >
     <div
-      class="w-[720px] bg-red-600 md:grid grid-cols-2 bg-white rounded-lg shadow-md overflow-hidden translate-y-1/3 md:translate-y-0"
+      class="w-[720px] md:grid grid-cols-2 bg-white rounded-lg shadow-md overflow-hidden translate-y-1/3 md:translate-y-0"
     >
       <div class="p-6 flex flex-col justify-between">
         <div>
