@@ -1,8 +1,17 @@
 <template>
-  <input type="text" placeholder="请输入手机号或邮箱" class="login-input" />
+  <input
+    type="text"
+    class="login-input"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
 </template>
 
-<script></script>
+<script setup lang="ts">
+const props = defineProps({
+  modelValue: String,
+});
+</script>
 
 <style scoped lang="scss">
 .login-input {

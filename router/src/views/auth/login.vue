@@ -8,8 +8,8 @@
       <div class="p-6">
         <h2 class="text-center text-gray-700 text-2xl mt-10">会员登录</h2>
         <div class="mt-10">
-          <RInput />
-          <RInput class="mt-4" />
+          <RInput placeholder="请输入手机号或邮箱" v-model="form.account"/>
+          <RInput class="mt-4" placeholder="请输入登录密码" v-model="form.password"/>
         </div>
         <RButton />
         <div class="flex gap-2 justify-center mt-5">
@@ -23,11 +23,13 @@
   </div>
 </template>
 
-<script setup>
-// import RInput from "@/components/form/RInput.vue";
-// import RButton from "@/components/form/RButton.vue";
-// import RLink from "@/components/form/RLink.vue";
+<script setup lang="ts">
+import { reactive } from "vue";
 
+const form = reactive<{ account: number | string; password: string }>({
+  account: "abc",
+  password: "",
+});
 </script>
 
 <style scoped lang="scss">

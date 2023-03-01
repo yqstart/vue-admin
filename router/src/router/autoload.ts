@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
+import { env } from "@/types/helper";
 
 const layouts = import.meta.glob("@/layouts/*.vue", { eager: true });
 const views = import.meta.glob("@/views/**/*.vue", { eager: true });
@@ -39,4 +40,7 @@ const getChildrenRoutes = (layoutRoute: RouteRecordRaw) => {
   });
   return routes;
 };
-export default getRoutes();
+const routes = env.VITE_ROUTER_AUTOLOAD
+  ? getRoutes()
+  : ([] as RouteRecordRaw[]);
+export default routes;
