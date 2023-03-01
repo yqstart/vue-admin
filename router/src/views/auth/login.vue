@@ -1,5 +1,10 @@
 <template>
-  <div
+  <Form
+    :validation-schema="{
+      account: v.yup.string().required().email().label('账号'),
+      password: v.yup.string().required().min(6).label('密码'),
+    }"
+    @submit="onSubmit"
     class="bg-slate-300 h-screen flex justify-center items-start md:items-center p-5"
   >
     <div
@@ -8,8 +13,20 @@
       <div class="p-6">
         <h2 class="text-center text-gray-700 text-2xl mt-10">会员登录</h2>
         <div class="mt-10">
-          <RInput placeholder="请输入手机号或邮箱" v-model="form.account"/>
-          <RInput class="mt-4" placeholder="请输入登录密码" v-model="form.password"/>
+          <Field
+            name="account"
+            type="email"
+            class="login-input"
+            placeholder="请输入用户名"
+          />
+          <ErrorMessage name="account" as="div" class="input-error" />
+          <Field
+            name="password"
+            type="password"
+            class="login-input mt-4"
+            placeholder="请输入密码"
+          />
+          <ErrorMessage name="password" as="div" class="input-error" />
         </div>
         <RButton />
         <div class="flex gap-2 justify-center mt-5">
@@ -20,22 +37,25 @@
         <img src="/image/login.jpg" class="h-96 w-full object-cover" />
       </div>
     </div>
-  </div>
+  </Form>
 </template>
 
 <script setup lang="ts">
 import { reactive } from "vue";
+import v from "@/plugins/validate";
+const { Form, Field, ErrorMessage } = v;
 
 const form = reactive<{ account: number | string; password: string }>({
   account: "abc",
   password: "",
 });
+
+const onSubmit = (values) => {
+  alert(values);
+};
 </script>
 
 <style scoped lang="scss">
-//.login-input {
-//  @apply border border-gray-200 placeholder:text-xs w-full rounded-sm py-1 px-2 outline-none focus:ring-2 ring-offset-2 ring-violet-600 duration-300 focus:border-white;
-//}
 //.login-button {
 //  @apply bg-violet-800 text-white w-full py-2 rounded-md hover:bg-violet-500 duration-300;
 //}
