@@ -8,22 +8,12 @@
       <div class="p-6">
         <h2 class="text-center text-gray-700 text-2xl mt-10">会员登录</h2>
         <div class="mt-10">
-          <input
-            type="text"
-            placeholder="请输入手机号或邮箱"
-            class="login-input"
-          />
-          <input
-            type="text"
-            placeholder="请输入手机号或邮箱"
-            class="login-input mt-4"
-          />
+          <RInput />
+          <RInput class="mt-4" />
         </div>
-        <button class="login-button mt-6">登录</button>
+        <RButton />
         <div class="flex gap-2 justify-center mt-5">
-          <a href="" class="text-sm text-gray-700">网站首页</a>
-          <a href="" class="text-sm text-gray-700">会员注册</a>
-          <a href="" class="text-sm text-gray-700">找回密码</a>
+          <RLink />
         </div>
       </div>
       <div class="hidden md:block">
@@ -33,13 +23,22 @@
   </div>
 </template>
 
-<script setup></script>
+<script>
+import { defineComponent } from "vue";
+import RInput from "@/components/form/RInput.vue";
+import RButton from "@/components/form/RButton.vue";
+import RLink from "@/components/form/RLink.vue";
+
+export default defineComponent({
+  components: {RLink, RButton, RInput },
+});
+</script>
 
 <style scoped lang="scss">
-.login-input {
-  @apply border border-gray-200 placeholder:text-xs w-full rounded-sm py-1 px-2 outline-none focus:ring-2 ring-offset-2 ring-violet-600 duration-300 focus:border-white;
-}
-.login-button {
-  @apply bg-violet-800 text-white w-full py-2 rounded-md hover:bg-violet-500 duration-300;
-}
+//.login-input {
+//  @apply border border-gray-200 placeholder:text-xs w-full rounded-sm py-1 px-2 outline-none focus:ring-2 ring-offset-2 ring-violet-600 duration-300 focus:border-white;
+//}
+//.login-button {
+//  @apply bg-violet-800 text-white w-full py-2 rounded-md hover:bg-violet-500 duration-300;
+//}
 </style>
