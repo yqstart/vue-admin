@@ -2,6 +2,7 @@
   <div class="admin h-screen w-screen flex">
     <RMenu></RMenu>
     <div class="content flex-1 bg-gray-200">
+      <RNavBar></RNavBar>
       <router-view />
     </div>
   </div>
@@ -9,6 +10,7 @@
 
 <script setup lang="ts">
 import RMenu from "./admin/RMenu.vue"
+import RNavBar from "./admin/RNavBar.vue"
 </script>
 
 <style scoped lang="scss"></style>
@@ -20,6 +22,6 @@ export default {
       auth: true
     }
   },
-  components: { RMenu }
+  components: { RMenu, RNavBar }
 }
 </script>
