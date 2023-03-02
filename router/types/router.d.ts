@@ -1,9 +1,10 @@
 // typings.d.ts or router.ts
-import "vue-router";
+import "vue-router"
 
 declare module "vue-router" {
   interface RouteMeta {
     // 是可选的
-    auth?: boolean;
+    auth?: boolean
+    guest?: boolean
   }
 }

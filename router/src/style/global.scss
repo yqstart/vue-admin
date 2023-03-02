@@ -4,3 +4,9 @@
 .input-error {
   @apply rounded-md bg-pink-500 text-white text-xs px-2 py-1 mt-2;
 }
+.common-button {
+  @apply bg-violet-800 text-white py-2 rounded-md hover:bg-violet-500 duration-300;
+  &.common-danger {
+    @apply bg-fuchsia-700 hover:bg-fuchsia-500;
+  }
+}
