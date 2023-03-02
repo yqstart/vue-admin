@@ -1,19 +1,17 @@
 <template>
   <div class="admin h-screen w-screen flex">
-    <div class="menu w-[200px] bg-gray-800">
-      <div class="logo text-white">
-        <i class="fas fa-robot"></i>
-      </div>
-    </div>
+    <RMenu></RMenu>
     <div class="content flex-1 bg-gray-200">
       <router-view />
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import RMenu from "./admin/RMenu.vue"
+</script>
 
-<style scoped></style>
+<style scoped lang="scss"></style>
 
 <script lang="ts">
 export default {
@@ -21,6 +19,7 @@ export default {
     meta: {
       auth: true
     }
-  }
+  },
+  components: { RMenu }
 }
 </script>
