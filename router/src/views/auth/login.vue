@@ -23,6 +23,7 @@
               type="email"
               class="login-input"
               placeholder="请输入用户名"
+              value="admin@123"
             />
             <ErrorMessage name="account" as="div" class="input-error" />
             <Field
@@ -30,6 +31,7 @@
               type="password"
               class="login-input mt-4"
               placeholder="请输入密码"
+              value="admin@123"
             />
             <ErrorMessage name="password" as="div" class="input-error" />
           </div>
@@ -59,20 +61,19 @@ import { reactive } from "vue";
 import v from "@/plugins/validate";
 import userApi from "@/apis/userApi";
 import { store } from "@/utils";
-const { Form, Field, ErrorMessage } = v;
+import { useRouter } from "vue-router";
 
-const form = reactive<{ account: number | string; password: string }>({
-  account: "abc",
-  password: "",
-});
+const { Form, Field, ErrorMessage } = v;
+const router = useRouter();
 const onSubmit = async (values: any) => {
   const {
     result: { token },
   } = await userApi.login(values);
   store.set("token", {
-    expire: 100,
+    // expire: 600,
     token,
   });
+  router.push({ name: "home" });
 };
 </script>
 
@@ -81,3 +82,11 @@ const onSubmit = async (values: any) => {
 //  @apply bg-violet-800 text-white w-full py-2 rounded-md hover:bg-violet-500 duration-300;
 //}
 </style>
+
+<script lang="ts">
+export default {
+  route: {
+    name: "login",
+  },
+};
+</script>

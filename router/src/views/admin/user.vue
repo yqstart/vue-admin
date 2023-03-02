@@ -2,10 +2,10 @@
 <script setup lang="ts"></script>
 
 <style scoped></style>
-<script>
+<!-- <script>
 export default {
   route: {
     path: "/User",
   },
 };
-</script>
+</script> -->

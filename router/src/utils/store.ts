@@ -11,12 +11,12 @@ export default {
     localStorage.setItem(key, JSON.stringify(data));
   },
 
-  get(key: string) {
+  get(key: string): IData | null {
     const item = localStorage.getItem(key);
     if (item) {
       const data = JSON.parse(item);
       const expire = data?.expire;
-      if (data.expire < new Date().getTime()) {
+      if (expire && expire < new Date().getTime()) {
         localStorage.removeItem(key);
         return null;
       }
