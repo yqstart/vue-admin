@@ -1,10 +1,10 @@
 <template>
-  <div class="admin h-screen w-screen flex">
+  <div class="admin h-screen w-screen flex bg-gray-200">
     <RMenu></RMenu>
-    <div class="content flex-1 bg-gray-200">
+    <div class="content flex-1">
       <RNavBar></RNavBar>
       <HistoryLink></HistoryLink>
-      <div class="m-3 p-5 bg-white">
+      <div class="px-3">
         <router-view />
       </div>
     </div>

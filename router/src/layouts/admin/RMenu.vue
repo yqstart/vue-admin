@@ -62,7 +62,9 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
             <span class="text-base">{{ menu.title }}</span>
           </section>
           <section>
-            <i class="fas fa-angle-down"></i>
+            <i
+              class="fas fa-angle-down duration-300"
+              :class="{ 'rotate-180': menu.active }"></i>
           </section>
         </dt>
         <dd
@@ -90,7 +92,7 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
         }
       }
       dd {
-        @apply py-3 pl-4 mt-2 text-white rounded-md cursor-pointer duration-300 hover:bg-violet-500;
+        @apply py-3 pl-4 mt-2 text-white rounded-md cursor-pointer duration-300 hover:bg-violet-500 bg-gray-700;
         &.active {
           @apply bg-violet-700;
         }

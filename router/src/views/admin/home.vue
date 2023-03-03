@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue"
-
+import { ref, nextTick } from "vue"
+import { chart1, chart2 } from "./echarts"
 interface ICard {
   title: string
   price: number
@@ -44,6 +44,11 @@ const cards = ref<ICard[]>([
     total: 34343
   }
 ])
+
+nextTick(() => {
+  echarts.init(document.getElementById("chart1")).setOption(chart1)
+  echarts.init(document.getElementById("chart2")).setOption(chart2)
+})
 </script>
 
 <template>
@@ -52,7 +57,6 @@ const cards = ref<ICard[]>([
       shadow="hover"
       v-for="(card, index) in cards"
       :key="index"
-      :body-style="{ padding: '20px' }"
       class="cursor-pointer">
       <template #header>
         <div class="flex justify-between items-center">
@@ -77,6 +81,14 @@ const cards = ref<ICard[]>([
         <span>{{ card.total }}</span>
       </section>
     </el-card>
+  </div>
+  <div class="p-3 mt-3 bg-white grid grid-cols-2">
+    <div
+      id="chart1"
+      class="h-80"></div>
+    <div
+      id="chart2"
+      class="h-80"></div>
   </div>
 </template>
 
