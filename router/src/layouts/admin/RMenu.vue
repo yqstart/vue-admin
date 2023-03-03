@@ -25,6 +25,21 @@ const menus = ref<IMenu[]>([
     title: "编辑器",
     icon: "fas fa-spell-check",
     children: [{ title: "markdown" }, { title: "富文本编辑器" }]
+  },
+  {
+    title: "错误页面",
+    icon: "fab fa-cc-diners-club",
+    active: true,
+    children: [
+      { title: "404页面", active: true },
+      { title: "403页面" },
+      { title: "500页面" }
+    ]
+  },
+  {
+    title: "编辑器",
+    icon: "fas fa-spell-check",
+    children: [{ title: "markdown" }, { title: "富文本编辑器" }]
   }
 ])
 
