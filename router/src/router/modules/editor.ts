@@ -3,6 +3,11 @@ export default {
   name: "editor",
   path: "/editor",
   component: () => import("@/layouts/editor.vue"),
+  meta: {
+    title: "编辑页面",
+    icon: "fas fa-keyboard",
+    show: true
+  },
   children: [
     {
       name: "admin.base",
@@ -12,7 +17,11 @@ export default {
     {
       name: "admin.markdown",
       path: "markdown",
-      component: () => import("@/views/editor/markdown.vue")
+      component: () => import("@/views/editor/markdown.vue"),
+      meta: {
+        title: "markdown",
+        show: true
+      }
     }
   ]
 } as RouteRecordRaw

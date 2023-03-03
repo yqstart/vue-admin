@@ -12,5 +12,6 @@ declare module "vue-router" {
     title?: string
     icon?: string
     isCheck?: boolean
+    permissions?: string[]
   }
 }

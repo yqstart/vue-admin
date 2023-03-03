@@ -6,7 +6,7 @@
         .string()
         .required()
         .min(6, '密码必须大于6位')
-        .label('密码'),
+        .label('密码')
     }"
     @submit="onSubmit"
     class="bg-slate-300 h-screen flex justify-center items-start md:items-center p-5">
@@ -66,11 +66,11 @@ const { Form, Field, ErrorMessage } = v
 const router = useRouter()
 const onSubmit = async (values: any) => {
   const {
-    result: { token },
+    result: { token }
   } = await userApi.login(values)
   store.set("token", {
     // expire: 600,
-    token,
+    token
   })
   router.push({ name: "home" })
 }
@@ -87,8 +87,8 @@ export default {
   route: {
     name: "login",
     meta: {
-      guest: true,
-    },
-  },
+      guest: true
+    }
+  }
 }
 </script>

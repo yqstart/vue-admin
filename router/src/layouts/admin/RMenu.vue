@@ -2,49 +2,8 @@
 import { ref } from "vue"
 import { useRouterStore } from "@/store/router"
 import { RouteRecordNormalized, RouteRecordRaw } from "vue-router"
-interface IMenuItem {
-  title: string
-  icon?: string
-  active?: boolean
-}
-interface IMenu extends IMenuItem {
-  children?: IMenuItem[]
-}
 
 const { routes: routerStore } = useRouterStore()
-
-const menus = ref<IMenu[]>([
-  {
-    title: "错误页面",
-    icon: "fab fa-cc-diners-club",
-    active: true,
-    children: [
-      { title: "404页面", active: true },
-      { title: "403页面" },
-      { title: "500页面" }
-    ]
-  },
-  {
-    title: "编辑器",
-    icon: "fas fa-spell-check",
-    children: [{ title: "markdown" }, { title: "富文本编辑器" }]
-  },
-  {
-    title: "错误页面",
-    icon: "fab fa-cc-diners-club",
-    active: true,
-    children: [
-      { title: "404页面", active: true },
-      { title: "403页面" },
-      { title: "500页面" }
-    ]
-  },
-  {
-    title: "编辑器",
-    icon: "fas fa-spell-check",
-    children: [{ title: "markdown" }, { title: "富文本编辑器" }]
-  }
-])
 
 const resetMenus = () => {
   routerStore.forEach(pMenu => {
@@ -61,7 +20,7 @@ const handle = (pMenu: RouteRecordNormalized, cMenu?: RouteRecordRaw) => {
   resetMenus()
   pMenu.meta.isCheck = true
   if (cMenu && cMenu.meta) {
-    cMenu.meta.isCheck = false
+    cMenu.meta.isCheck = true
   }
 }
 </script>

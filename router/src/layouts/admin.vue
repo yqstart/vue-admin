@@ -25,7 +25,6 @@ export default {
     meta: {
       auth: true
     }
-  },
-  components: { RMenu, RNavBar }
+  }
 }
 </script>

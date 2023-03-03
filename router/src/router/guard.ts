@@ -5,20 +5,29 @@ class Guard {
   constructor(private router: Router) {}
 
   public run() {
-    this.router.beforeEach((to, from) => {
-      const token = store.get("token")?.token
-      // 登录验证
-      if (this.isLogin(to, token) === false) return { name: "login" }
-      if (this.isGuest(to, token) === false) return from // { name: "home" }
-    })
+    this.router.beforeEach(this.beforeEach.bind(this))
   }
 
-  private isGuest(route: RouteLocationNormalized, token: string | undefined) {
-    return Boolean(!route.meta.guest || (route.meta.guest && !token))
+  private beforeEach(
+    to: RouteLocationNormalized,
+    from: RouteLocationNormalized
+  ) {
+    if (this.isLogin(to) === false) return { name: "login" }
+    if (this.isGuest(to) === false) return from // {home}
   }
 
-  private isLogin(route: RouteLocationNormalized, token: string | undefined) {
-    return Boolean(!route.meta.auth || (route.meta.auth && token))
+  private token(): string | undefined {
+    return store.get("token")?.token
+  }
+
+  // 游客 login register
+  private isGuest(route: RouteLocationNormalized) {
+    return Boolean(!route.meta.guest || (route.meta.guest && !this.token()))
+  }
+
+  // 登录
+  private isLogin(route: RouteLocationNormalized) {
+    return Boolean(!route.meta.auth || (route.meta.auth && this.token()))
   }
 }
 

@@ -14,8 +14,7 @@ export default {
       path: "404",
       component: () => import("@/views/errors/404.vue"),
       meta: {
-        title: "错误页面",
-        icon: "fas fa-bomb",
+        title: "404",
         show: true
       }
     },

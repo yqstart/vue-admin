@@ -11,6 +11,7 @@ export const useRouterStore = defineStore("routerStore", () => {
         item.children = item.children.filter(child => child.meta?.show)
         return item
       })
+      .filter(item => item.children.length)
     return arr
   }
   const routes = getRoutes()

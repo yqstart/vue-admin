@@ -1,13 +1,7 @@
-<script setup lang="ts">
-// import userApi from "@/apis/userApi";
-//
-// const res = await userApi.info()
-// console.log(res.result, 'dsd')
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <router-view />
+  <router-view />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
