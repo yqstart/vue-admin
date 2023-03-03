@@ -12,7 +12,12 @@ export default {
     {
       name: "error.404",
       path: "404",
-      component: () => import("@/views/errors/404.vue")
+      component: () => import("@/views/errors/404.vue"),
+      meta: {
+        title: "错误页面",
+        icon: "fas fa-bomb",
+        show: true
+      }
     },
     {
       name: "error.500",

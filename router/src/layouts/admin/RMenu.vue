@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
-
+import { useRouterStore } from "@/store/router"
+console.log(useRouterStore().routes)
 interface IMenuItem {
   title: string
   icon?: string
