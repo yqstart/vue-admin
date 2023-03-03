@@ -11,5 +11,6 @@ declare module "vue-router" {
     // 菜单标题
     title?: string
     icon?: string
+    isCheck?: boolean
   }
 }

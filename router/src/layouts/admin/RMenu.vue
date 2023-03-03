@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { useRouterStore } from "@/store/router"
-console.log(useRouterStore().routes)
+import { RouteRecordNormalized, RouteRecordRaw } from "vue-router"
 interface IMenuItem {
   title: string
   icon?: string
@@ -10,6 +10,8 @@ interface IMenuItem {
 interface IMenu extends IMenuItem {
   children?: IMenuItem[]
 }
+
+const { routes: routerStore } = useRouterStore()
 
 const menus = ref<IMenu[]>([
   {
@@ -45,17 +47,22 @@ const menus = ref<IMenu[]>([
 ])
 
 const resetMenus = () => {
-  menus.value.forEach(pMenu => {
-    pMenu.active = false
+  routerStore.forEach(pMenu => {
+    pMenu.meta.isCheck = false
     pMenu.children?.forEach(cMenu => {
-      cMenu.active = false
+      if (cMenu.meta) {
+        cMenu.meta.isCheck = false
+      }
     })
   })
 }
 
-const handle = (pMenu: IMenu, cMenu?: IMenu) => {
+const handle = (pMenu: RouteRecordNormalized, cMenu?: RouteRecordRaw) => {
   resetMenus()
-  pMenu.active = true
+  pMenu.meta.isCheck = true
+  if (cMenu && cMenu.meta) {
+    cMenu.meta.isCheck = false
+  }
 }
 </script>
 
@@ -68,28 +75,28 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
     <!-- 菜单 -->
     <div class="left-container">
       <dl
-        v-for="(menu, index) in menus"
+        v-for="(menu, index) in routerStore"
         :key="index">
         <dt @click="handle(menu)">
           <section>
             <i
               class="mr-2 text-xl"
-              :class="menu.icon"></i>
-            <span class="text-base">{{ menu.title }}</span>
+              :class="menu.meta.icon"></i>
+            <span class="text-base">{{ menu.meta.title }}</span>
           </section>
           <section>
             <i
               class="fas fa-angle-down duration-300"
-              :class="{ 'rotate-180': menu.active }"></i>
+              :class="{ 'rotate-180': menu.meta?.isCheck }"></i>
           </section>
         </dt>
         <dd
-          v-show="menu.active"
+          v-show="menu.meta.isCheck"
           v-for="(child, i) in menu.children"
           @click="handle(menu, child)"
-          :class="{ active: child.active }"
+          :class="{ active: child.meta?.isCheck }"
           :key="i">
-          {{ child.title }}
+          {{ child.meta?.title }}
         </dd>
       </dl>
     </div>
