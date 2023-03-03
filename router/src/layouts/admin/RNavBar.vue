@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useUserStore } from "@/store/user"
+</script>
 
 <template>
   <div class="bg-white p-4 flex justify-between items-center">
@@ -8,9 +10,11 @@
     </el-breadcrumb>
     <div class="flex justify-center items-center relative group">
       <img
-        src="/image/avatar.png"
+        :src="useUserStore().info?.avatar"
         class="w-9 h-9 rounded-full object-cover border border-blue-300 p-0.5 cursor-pointer" />
-      <span class="text-gray-600 text-sm ml-2 cursor-pointer">vue-admin</span>
+      <span class="text-gray-600 text-sm ml-2 cursor-pointer">{{
+        useUserStore().info?.name
+      }}</span>
       <section
         class="group-hover:block hidden absolute px-3 bg-white shadow-sm whitespace-nowrap text-gray-700 border rounded-md top-12">
         <div

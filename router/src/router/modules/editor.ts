@@ -2,11 +2,12 @@ import { RouteRecordRaw } from "vue-router"
 export default {
   name: "editor",
   path: "/editor",
-  component: () => import("@/layouts/editor.vue"),
+  component: () => import("@/layouts/admin.vue"),
   meta: {
     title: "编辑页面",
     icon: "fas fa-keyboard",
-    show: true
+    show: true,
+    auth: true
   },
   children: [
     {

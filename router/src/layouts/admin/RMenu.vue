@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { useRouterStore } from "@/store/router"
-import { RouteRecordNormalized, RouteRecordRaw } from "vue-router"
+import { RouteRecordNormalized, RouteRecordRaw, useRouter } from "vue-router"
 
 const { routes: routerStore } = useRouterStore()
+const routerService = useRouter()
 
 const resetMenus = () => {
   routerStore.forEach(pMenu => {
@@ -21,6 +22,7 @@ const handle = (pMenu: RouteRecordNormalized, cMenu?: RouteRecordRaw) => {
   pMenu.meta.isCheck = true
   if (cMenu && cMenu.meta) {
     cMenu.meta.isCheck = true
+    routerService.push(cMenu)
   }
 }
 </script>

@@ -2,11 +2,12 @@ import { RouteRecordRaw } from "vue-router"
 export default {
   name: "error",
   path: "/error",
-  component: () => import("@/layouts/error.vue"),
+  component: () => import("@/layouts/admin.vue"),
   meta: {
     title: "错误页面",
     icon: "fas fa-bomb",
-    show: true
+    show: true,
+    auth: true
   },
   children: [
     {

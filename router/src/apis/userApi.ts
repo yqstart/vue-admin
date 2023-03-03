@@ -1,20 +1,20 @@
-import { http } from "@/plugins/axios";
+import { http } from "@/plugins/axios"
 
-interface User {
-  name: string;
-  age: number;
-  avatar: string;
+export interface User {
+  name: string
+  age: number
+  avatar: string
 }
 
 interface Login {
-  token: string;
+  token: string
 }
 
 class UserApi {
   async info() {
     return http.request<User>({
-      url: "info",
-    });
+      url: "info"
+    })
   }
 
   async login(data: any) {
@@ -22,8 +22,8 @@ class UserApi {
       url: "login",
       method: "post",
       data
-    });
+    })
   }
 }
 
-export default new UserApi();
+export default new UserApi()

@@ -1,5 +1,6 @@
 import { store } from "@/utils"
 import { RouteLocationNormalized, Router } from "vue-router"
+import { useUserStore } from "@/store/user"
 
 class Guard {
   constructor(private router: Router) {}
@@ -8,12 +9,17 @@ class Guard {
     this.router.beforeEach(this.beforeEach.bind(this))
   }
 
-  private beforeEach(
+  private async beforeEach(
     to: RouteLocationNormalized,
     from: RouteLocationNormalized
   ) {
     if (this.isLogin(to) === false) return { name: "login" }
     if (this.isGuest(to) === false) return from // {home}
+    await this.getUserInfo()
+  }
+
+  private getUserInfo = () => {
+    if (this.token()) return useUserStore().getUserInfo()
   }
 
   private token(): string | undefined {
