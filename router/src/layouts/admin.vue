@@ -3,7 +3,10 @@
     <RMenu></RMenu>
     <div class="content flex-1 bg-gray-200">
       <RNavBar></RNavBar>
-      <router-view />
+      <HistoryLink></HistoryLink>
+      <div class="m-3 p-5 bg-white">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -11,6 +14,7 @@
 <script setup lang="ts">
 import RMenu from "./admin/RMenu.vue"
 import RNavBar from "./admin/RNavBar.vue"
+import HistoryLink from "@/layouts/admin/historyLink.vue"
 </script>
 
 <style scoped lang="scss"></style>
