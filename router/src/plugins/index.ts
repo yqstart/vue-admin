@@ -1,11 +1,13 @@
 import { App, Component } from "vue"
 import setupTailwind from "@/plugins/tailwindcss"
 import setupElement from "./elementui"
+import setupPinia from "./pinia"
 
 const setupPlugins = (app: App) => {
   autoRegisterComponent(app)
-  setupTailwind()
   setupElement(app)
+  setupPinia(app)
+  setupTailwind()
 }
 
 const autoRegisterComponent = (app: App) => {
