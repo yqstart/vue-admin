@@ -52,12 +52,12 @@ nextTick(() => {
 </script>
 
 <template>
-  <div class="grid grid-flow-col gap-3">
+  <div class="md:flex mt-3 gap-3">
     <el-card
       shadow="hover"
       v-for="(card, index) in cards"
       :key="index"
-      class="cursor-pointer">
+      class="cursor-pointer md:flex-1 mb-3">
       <template #header>
         <div class="flex justify-between items-center">
           {{ card.title }}
@@ -72,7 +72,7 @@ nextTick(() => {
       <section class="flex justify-between items-center mt-3">
         <span class="text-3xl">{{ card.price }}</span>
         <i
-          class="text-2xl"
+          class="text-4xl"
           :class="[card.icon, card.iconColor]"></i>
       </section>
 
@@ -82,13 +82,28 @@ nextTick(() => {
       </section>
     </el-card>
   </div>
-  <div class="p-3 mt-3 bg-white grid grid-cols-2">
-    <div
-      id="chart1"
-      class="h-80"></div>
-    <div
-      id="chart2"
-      class="h-80"></div>
+  <div class="grid md:grid-cols-2 gap-3">
+    <el-card shadow="hover">
+      <template #header>
+        <div>
+          <span>用户统计</span>
+        </div>
+      </template>
+      <div
+        id="chart1"
+        class="h-80 md:h-52 w-full"></div>
+    </el-card>
+
+    <el-card shadow="hover">
+      <template #header>
+        <div>
+          <span>销售额 </span>
+        </div>
+      </template>
+      <div
+        id="chart2"
+        class="h-80 md:h-52 w-full"></div>
+    </el-card>
   </div>
 </template>
 

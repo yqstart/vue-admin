@@ -1,6 +1,6 @@
 <template>
-  <div class="admin h-screen w-screen flex bg-gray-200">
-    <RMenu></RMenu>
+  <div class="admin md:h-min-screen h-screen w-screen flex bg-gray-200">
+    <RMenu class="hidden md:block"></RMenu>
     <div class="content flex-1">
       <RNavBar></RNavBar>
       <HistoryLink></HistoryLink>

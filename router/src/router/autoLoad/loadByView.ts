@@ -25,7 +25,7 @@ const getRouteByModule = (
   const route = {
     name: name?.replace("/", "."),
     path: `/${name}`,
-    component: module.default,
+    component: module.default
   } as RouteRecordRaw
   return Object.assign(route, module.default?.route)
 }
@@ -40,5 +40,7 @@ const getChildrenRoutes = (layoutRoute: RouteRecordRaw) => {
   })
   return routes
 }
-const routes = env.VITE_ROUTER_AUTOLOAD ? getRoutes() : ([] as RouteRecordRaw[])
-export default routes
+const routes = env.VITE_ROUTER_AUTO_LOAD
+  ? getRoutes()
+  : ([] as RouteRecordRaw[])
+export default getRoutes

@@ -1,7 +1,7 @@
 export const chart1 = {
-  title: {
-    text: "ECharts 入门示例"
-  },
+  // title: {
+  //   text: "ECharts 入门示例"
+  // },
   tooltip: {},
   legend: {
     data: ["销量"]
@@ -20,9 +20,9 @@ export const chart1 = {
 }
 
 export const chart2 = {
-  title: {
-    text: "ECharts 入门示例"
-  },
+  // title: {
+  //   text: "ECharts 入门示例"
+  // },
   tooltip: {},
   legend: {
     data: ["销量"]
