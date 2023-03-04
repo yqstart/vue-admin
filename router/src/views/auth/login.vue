@@ -8,7 +8,7 @@
         .min(6, '密码必须大于6位')
         .label('密码')
     }"
-    @submit="onSubmit"
+    @submit="utils.user.login($event)"
     class="bg-slate-300 h-screen flex justify-center items-start md:items-center p-5">
     <div
       class="w-[720px] md:grid grid-cols-2 bg-white rounded-lg shadow-md overflow-hidden translate-y-1/3 md:translate-y-0">
@@ -58,22 +58,13 @@
 
 <script setup lang="ts">
 import v from "@/plugins/validate"
-import userApi from "@/apis/userApi"
 import utils from "@/utils"
 import { useRouter } from "vue-router"
-import { CacheEnum } from "@/enum/cacheEnum"
 
 const { Form, Field, ErrorMessage } = v
 const router = useRouter()
 const onSubmit = async (values: any) => {
-  const {
-    result: { token }
-  } = await userApi.login(values)
-  utils.store.set(CacheEnum.TOKEN_NAME, {
-    // expire: 600,
-    token
-  })
-  router.push({ name: "home" })
+  utils.user.login(values)
 }
 </script>
 
