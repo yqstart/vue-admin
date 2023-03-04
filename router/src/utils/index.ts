@@ -1,5 +1,7 @@
-import env from "@/utils/env";
+import env from "@/utils/env"
 
-import store from "@/utils/store";
+import store from "@/utils/store"
 
-export { env, store };
+import * as user from "@/utils/user"
+
+export default { env, store, user }

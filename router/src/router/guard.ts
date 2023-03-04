@@ -1,6 +1,7 @@
-import { store } from "@/utils"
+import utils from "@/utils"
 import { RouteLocationNormalized, Router } from "vue-router"
 import { useUserStore } from "@/store/user"
+import { CacheEnum } from "@/enum/cacheEnum"
 
 class Guard {
   constructor(private router: Router) {}
@@ -23,7 +24,7 @@ class Guard {
   }
 
   private token(): string | undefined {
-    return store.get("token")?.token
+    return utils.store.get(CacheEnum.TOKEN_NAME)?.token
   }
 
   // 游客 login register

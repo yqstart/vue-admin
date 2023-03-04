@@ -59,8 +59,9 @@
 <script setup lang="ts">
 import v from "@/plugins/validate"
 import userApi from "@/apis/userApi"
-import { store } from "@/utils"
+import utils from "@/utils"
 import { useRouter } from "vue-router"
+import { CacheEnum } from "@/enum/cacheEnum"
 
 const { Form, Field, ErrorMessage } = v
 const router = useRouter()
@@ -68,7 +69,7 @@ const onSubmit = async (values: any) => {
   const {
     result: { token }
   } = await userApi.login(values)
-  store.set("token", {
+  utils.store.set(CacheEnum.TOKEN_NAME, {
     // expire: 600,
     token
   })

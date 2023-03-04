@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router"
-import { env } from "@/utils"
+// import utils from "@/utils"
 
 const layouts = import.meta.glob("@/layouts/*.vue", { eager: true })
 const views = import.meta.glob("@/views/**/*.vue", { eager: true })
@@ -40,7 +40,7 @@ const getChildrenRoutes = (layoutRoute: RouteRecordRaw) => {
   })
   return routes
 }
-const routes = env.VITE_ROUTER_AUTO_LOAD
-  ? getRoutes()
-  : ([] as RouteRecordRaw[])
+// const routes = utils.env.VITE_ROUTER_AUTO_LOAD
+//   ? getRoutes()
+//   : ([] as RouteRecordRaw[])
 export default getRoutes

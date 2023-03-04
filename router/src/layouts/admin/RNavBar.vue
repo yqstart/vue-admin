@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUserStore } from "@/store/user"
+import utils from "@/utils"
 </script>
 
 <template>
@@ -16,14 +17,18 @@ import { useUserStore } from "@/store/user"
         useUserStore().info?.name
       }}</span>
       <section
-        class="group-hover:block hidden absolute px-3 bg-white shadow-sm whitespace-nowrap text-gray-700 border rounded-md top-12">
+        class="group-hover:block hidden absolute px-3 bg-white shadow-sm whitespace-nowrap text-gray-700 border rounded-md top-9">
         <div
           class="flex items-center cursor-pointer py-2"
-          :class="index !== 3 && ['border-b']"
-          v-for="(item, index) in 4"
+          :class="index !== 2 && ['border-b']"
+          v-for="(item, index) in 3"
           :key="index">
           <i class="fas fa-house-user text-gray-600"></i>
-          <span class="text-sm ml-1">网站首页</span>
+          <span
+            class="text-sm ml-1"
+            @click="utils.user.logout()"
+            >退出登录</span
+          >
         </div>
       </section>
     </div>
