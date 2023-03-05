@@ -10,6 +10,7 @@ export const login = async (values: any) => {
   const {
     result: { token }
   } = await userApi.login(values)
+  console.log(token)
   utils.store.set(CacheEnum.TOKEN_NAME, {
     // expire: 600,
     token
