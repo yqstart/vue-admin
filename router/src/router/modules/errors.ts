@@ -4,10 +4,11 @@ export default {
   path: "/error",
   component: () => import("@/layouts/admin.vue"),
   meta: {
-    title: "错误页面",
-    icon: "fas fa-bomb",
-    show: true,
-    auth: true
+    auth: true,
+    menu: {
+      icon: "fas fa-bomb",
+      title: "错误页面"
+    }
   },
   children: [
     {
@@ -15,8 +16,9 @@ export default {
       path: "404",
       component: () => import("@/views/errors/404.vue"),
       meta: {
-        title: "404",
-        show: true
+        menu: {
+          title: "404"
+        }
       }
     },
     {

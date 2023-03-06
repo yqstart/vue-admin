@@ -15,7 +15,8 @@
     // 配置@提示
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "#/*": ["types/*"]
     },
     "types": ["element-plus/global"]
   },

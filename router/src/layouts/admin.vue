@@ -15,6 +15,10 @@
 import RMenu from "./admin/RMenu.vue"
 import RNavBar from "./admin/RNavBar.vue"
 import HistoryLink from "@/layouts/admin/historyLink.vue"
+import { useMenuStore } from "@/store/menu"
+
+useMenuStore().getMenus()
+console.log(useMenuStore().menu, "dsd")
 </script>
 
 <style scoped lang="scss"></style>
