@@ -1,5 +1,4 @@
 import { IMenu } from "#/menu"
-// typings.d.ts or router.ts
 import "vue-router"
 
 declare module "vue-router" {
@@ -9,5 +8,7 @@ declare module "vue-router" {
     guest?: boolean
     permissions?: string[]
     menu?: IMenu
+    enterClass?: string
+    leaveClass?: string
   }
 }
