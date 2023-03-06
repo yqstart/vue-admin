@@ -5,7 +5,12 @@
       <RNavBar></RNavBar>
       <HistoryLink></HistoryLink>
       <div class="px-3">
-        <router-view />
+        <router-view #default="{ Component }">
+          <Transition
+            enter-active-class="animate__animated animate__bounceInRight">
+            <component :is="Component"></component>
+          </Transition>
+        </router-view>
       </div>
     </div>
   </div>
