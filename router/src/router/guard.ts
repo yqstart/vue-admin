@@ -2,6 +2,7 @@ import utils from "@/utils"
 import { RouteLocationNormalized, Router } from "vue-router"
 import { useUserStore } from "@/store/user"
 import { CacheEnum } from "@/enum/cacheEnum"
+import { useMenuStore } from "@/store/menu"
 
 class Guard {
   constructor(private router: Router) {}
@@ -17,6 +18,7 @@ class Guard {
     if (this.isLogin(to) === false) return { name: "login" }
     if (this.isGuest(to) === false) return from // {home}
     await this.getUserInfo()
+    useMenuStore().addHistoryMenu(to)
   }
 
   private getUserInfo = () => {

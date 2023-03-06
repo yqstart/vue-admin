@@ -1,3 +1,4 @@
+import { RouteLocationNormalized } from "vue-router"
 import { ref } from "vue"
 import { IMenu } from "#/menu"
 import { defineStore } from "pinia"
@@ -5,6 +6,8 @@ import router from "@/router"
 
 export const useMenuStore = defineStore("menuStore", () => {
   const menu = ref<IMenu[]>([])
+
+  const historyMenu = ref<IMenu[]>([])
 
   const getMenus = () => {
     // 根据路由获取菜单
@@ -23,5 +26,16 @@ export const useMenuStore = defineStore("menuStore", () => {
       .filter(item => item.children?.length)
   }
 
-  return { menu, getMenus }
+  const addHistoryMenu = (route: RouteLocationNormalized) => {
+    const historyMe: IMenu = { ...route.meta?.menu, route: route.name }
+    const isHas = historyMenu.value.some(item => item.route === route.name)
+    if (!isHas) {
+      historyMenu.value.unshift(historyMe)
+    }
+    if (historyMenu.value.length > 10) {
+      historyMenu.value.pop()
+    }
+  }
+
+  return { menu, getMenus, historyMenu, addHistoryMenu }
 })
