@@ -16,7 +16,6 @@ const {  removeHistoryMenu } = useMenuStore()
         class="bg-white rounded-md py-2 px-3 text-gray-700 text-sm shadow-sm border hover:bg-violet-400 duration-300 hover:text-gray-100"
         :class="{ '!bg-violet-400 !text-gray-100': $route.name === n.route }"
         >
-        {{ $route.name === n.route }}
         <router-link :to="{ name: n.route }">{{ n.title }}</router-link>
 
         <i class="fas fa-delete-left ml-1 hover:text-green-300 cursor-pointer" @click="removeHistoryMenu(n)"></i>
