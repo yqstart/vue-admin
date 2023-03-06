@@ -3,10 +3,9 @@ import { useRouter } from "vue-router"
 import { CacheEnum } from "./../enum/cacheEnum"
 import utils from "@/utils"
 import userApi from "@/apis/userApi"
-import { storeToRefs } from "pinia"
 
-const router = useRouter()
 export const login = async (values: any) => {
+  const router = useRouter()
   const {
     result: { token }
   } = await userApi.login(values)
@@ -14,10 +13,12 @@ export const login = async (values: any) => {
     // expire: 600,
     token
   })
-  router.push({ name: "home" })
+  const routerName = utils.store.get(CacheEnum.REDIRECT_ROUTER_NAME) ?? "home"
+  router.push({ name: routerName })
 }
 export const logout = () => {
   utils.store.remove(CacheEnum.TOKEN_NAME)
+  const router = useRouter()
   router.push("/")
   useUserStore().info = null
 }
