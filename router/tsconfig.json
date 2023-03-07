@@ -18,7 +18,7 @@
       "@/*": ["src/*"],
       "#/*": ["types/*"]
     },
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global", "echarts", "lodash"]
   },
   "include": [
     "src/**/*.ts",
