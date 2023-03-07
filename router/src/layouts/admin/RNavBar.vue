@@ -11,8 +11,11 @@ const toggleState = () => {
   close.value = !close.value;
 };
 
+const isFullScreen = ref<boolean>(false)
+
 const fullScreen = () => {
-  document.documentElement.requestFullscreen();
+  isFullScreen.value ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  isFullScreen.value = !isFullScreen.value
 };
 </script>
 

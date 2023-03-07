@@ -27,7 +27,7 @@ nextTick(() => {
   toastEditor.editor.on("change", (type: string) => {
     emit(
       "update:modelValue",
-      toastEditor.editor[type === "markdown" ? "getMarkdown" : "getHtml"]()
+      toastEditor.editor[type === "markdown" ? "getMarkdown" : "getHTML"]()
     );
   });
 });

@@ -32,12 +32,12 @@ class Menu {
       .getRoutes()
       .filter((route) => route.children.length && route.meta.menu)
       .map((item) => {
-        const menuItem: IMenu = { ...item.meta.menu };
+        const menuItem: IMenu = {title: "", ...item.meta.menu };
         menuItem.children = item.children
           .filter((child) => child.meta?.menu)
           .map((route) => {
             return { ...route.meta?.menu, route: route.name };
-          });
+          }) as IMenu[];
         return menuItem;
       })
       .filter((item) => item.children?.length);

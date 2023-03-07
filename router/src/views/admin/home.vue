@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
 import { chart1, chart2 } from "./echarts";
+import * as echarts from 'echarts'
 interface ICard {
   title: string;
   price: number;
@@ -46,10 +47,8 @@ const cards = ref<ICard[]>([
 ]);
 
 nextTick(() => {
-  // @ts-ignore
-  echarts.init(document.getElementById("chart1")).setOption(chart1);
-  // @ts-ignore
-  echarts.init(document.getElementById("chart2")).setOption(chart2);
+  echarts.init(document.getElementById("chart1") as HTMLDivElement).setOption(chart1);
+  echarts.init(document.getElementById("chart2") as HTMLDivElement).setOption(chart2);
 });
 </script>
 
