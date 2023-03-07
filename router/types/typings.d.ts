@@ -15,3 +15,11 @@ declare namespace toastui {
     getHeight: () => string;
   }
 }
+
+declare class wangEditor {
+  constructor(el: string);
+  create: () => void;
+  config: { [key: string]: any };
+  txt: { [key: string]: any };
+  insertImgFn: (url: string) => void;
+}
