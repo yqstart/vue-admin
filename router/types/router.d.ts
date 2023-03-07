@@ -1,3 +1,4 @@
+// @ts-ignore
 import { IMenu } from "#/menu";
 import "vue-router";
 

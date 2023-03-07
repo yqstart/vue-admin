@@ -4,6 +4,6 @@
   <a href="" class="text-sm text-gray-700 hover:text-violet-700">找回密码</a>
 </template>
 
-<script></script>
+<script lang="ts" setup></script>
 
 <style scoped></style>

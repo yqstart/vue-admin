@@ -3,7 +3,7 @@
     type="text"
     class="login-input"
     :value="modelValue"
-    @input="$emit('update:modelValue', $event.target.value)"
+    @input="inputChange"
   />
 </template>
 
@@ -11,6 +11,14 @@
 const props = defineProps({
   modelValue: String,
 });
+
+const emit = defineEmits(["update:modelValue"]);
+
+const inputChange = (event: Event) => {
+  if (event.target) {
+    emit("update:modelValue", (event.target as HTMLInputElement).value);
+  }
+};
 </script>
 
 <style scoped lang="scss">

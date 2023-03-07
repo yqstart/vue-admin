@@ -46,7 +46,9 @@ const cards = ref<ICard[]>([
 ]);
 
 nextTick(() => {
+  // @ts-ignore
   echarts.init(document.getElementById("chart1")).setOption(chart1);
+  // @ts-ignore
   echarts.init(document.getElementById("chart2")).setOption(chart2);
 });
 </script>
