@@ -55,7 +55,7 @@ const fullScreen = () => {
             :key="index"
           >
             <i class="fas fa-house-user text-gray-600"></i>
-            <span class="text-sm ml-1" @click="utils.user.logout()"
+            <span class="text-sm ml-1" @click="utils.user.logout($router)"
               >退出登录</span
             >
           </div>

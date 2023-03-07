@@ -8,9 +8,16 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 const setupVitePlugins = (isBuild: boolean, env: ViteEnv) => {
   const plugins: Plugin[] = [
     vue(),
-    AutoImport({ resolvers: [ElementPlusResolver()] }),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+      imports: ["vue", "vue-router"],
+      dts: "types/auto-imports.d.ts",
+    }),
     Components({
       resolvers: [ElementPlusResolver()],
+      dirs: ["src/components"],
+      directoryAsNamespace: true,
+      dts: "types/components.d.ts",
     }),
   ];
   plugins.push(setupMockPlugin(isBuild));

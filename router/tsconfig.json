@@ -28,7 +28,8 @@
     "vite.config.ts",
     "vite/**/*.ts",
     "mock/**/*.ts",
-    "types/**/*.d.ts"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "types/**/*.d.ts",
+    "types/**/*.ts"
+  ]
+  //  "references": [{ "path": "./tsconfig.node.json" }]
 }

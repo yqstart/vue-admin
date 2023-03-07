@@ -8,7 +8,7 @@
         .min(6, '密码必须大于6位')
         .label('密码')
     }"
-    @submit="utils.user.login($event)"
+    @submit="onSubmit"
     class="bg-slate-300 h-screen flex justify-center items-start md:items-center p-5">
     <div
       class="w-[720px] md:grid grid-cols-2 bg-white rounded-lg shadow-md overflow-hidden translate-y-1/3 md:translate-y-0">
@@ -64,7 +64,7 @@ import { useRouter } from "vue-router"
 const { Form, Field, ErrorMessage } = v
 const router = useRouter()
 const onSubmit = async (values: any) => {
-  utils.user.login(values)
+  await utils.user.login(values, router)
 }
 </script>
 
