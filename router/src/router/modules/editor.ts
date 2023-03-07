@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from "vue-router"
+import { RouteRecordRaw } from "vue-router";
 export default {
   name: "editor",
   path: "/editor",
@@ -7,14 +7,19 @@ export default {
     auth: true,
     menu: {
       title: "编辑页面",
-      icon: "fas fa-keyboard"
-    }
+      icon: "fas fa-keyboard",
+    },
   },
   children: [
     {
       name: "admin.base",
       path: "base",
-      component: () => import("@/views/editor/base.vue")
+      component: () => import("@/views/editor/base.vue"),
+      meta: {
+        menu: {
+          title: "富文本",
+        },
+      },
     },
     {
       name: "admin.markdown",
@@ -22,9 +27,10 @@ export default {
       component: () => import("@/views/editor/markdown.vue"),
       meta: {
         menu: {
-          title: "markdown"
-        }
-      }
-    }
-  ]
-} as RouteRecordRaw
+          title: "markdown",
+        },
+        permission: "editor_markdown",
+      },
+    },
+  ],
+} as RouteRecordRaw;
