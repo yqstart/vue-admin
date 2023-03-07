@@ -3,6 +3,8 @@ import { useUserStore } from "@/store/user";
 import utils from "@/utils";
 import { useMenuStore } from "@/store/menu";
 import { storeToRefs } from "pinia";
+import RBreadcrumb from "@/components/RBreadcrumb.vue";
+import RNotification from "@/components/RNotification.vue";
 
 const { close } = storeToRefs(useMenuStore());
 const toggleState = () => {
@@ -27,38 +29,38 @@ const fullScreen = () => {
           v-else
         ></i>
       </div>
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">编辑器</el-breadcrumb-item>
-        <el-breadcrumb-item>富文本编辑器</el-breadcrumb-item>
-      </el-breadcrumb>
+      <RBreadcrumb class="hidden md:block"></RBreadcrumb>
     </div>
-    <div class="flex justify-center items-center relative group">
+    <div class="flex justify-center items-center">
+      <RNotification class="mr-5"></RNotification>
       <i
-        class="fa-brands fa-bilibili text-xl cursor-pointer mr-3"
+        class="fa-brands fa-microsoft text-xl cursor-pointer mr-5 text-gray-600"
         @click="fullScreen"
       ></i>
-      <img
-        :src="useUserStore().info?.avatar"
-        class="w-9 h-9 rounded-full object-cover border border-blue-300 p-0.5 cursor-pointer"
-      />
-      <span class="text-gray-600 text-sm ml-2 cursor-pointer">{{
-        useUserStore().info?.name
-      }}</span>
-      <section
-        class="group-hover:block hidden absolute px-3 bg-white shadow-sm whitespace-nowrap text-gray-700 border rounded-md top-9"
-      >
-        <div
-          class="flex items-center cursor-pointer py-2"
-          :class="index !== 2 && ['border-b']"
-          v-for="(item, index) in 3"
-          :key="index"
+      <div class="relative group flex justify-center items-center">
+        <img
+          :src="useUserStore().info?.avatar"
+          class="w-9 h-9 rounded-full object-cover border border-blue-300 p-0.5 cursor-pointer"
+        />
+        <span class="text-gray-600 text-sm ml-2 cursor-pointer">{{
+          useUserStore().info?.name
+        }}</span>
+        <section
+          class="group-hover:block hidden absolute px-3 bg-white shadow-sm whitespace-nowrap text-gray-700 border rounded-md top-9"
         >
-          <i class="fas fa-house-user text-gray-600"></i>
-          <span class="text-sm ml-1" @click="utils.user.logout()"
-            >退出登录</span
+          <div
+            class="flex items-center cursor-pointer py-2"
+            :class="index !== 2 && ['border-b']"
+            v-for="(item, index) in 3"
+            :key="index"
           >
-        </div>
-      </section>
+            <i class="fas fa-house-user text-gray-600"></i>
+            <span class="text-sm ml-1" @click="utils.user.logout()"
+              >退出登录</span
+            >
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </template>

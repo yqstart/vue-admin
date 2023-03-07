@@ -17,6 +17,8 @@ export const useMenuStore = defineStore(
 
     const close = ref(false);
 
+    const routeRecord = ref<null | RouteLocationNormalized>(null);
+
     const getMenus = () => {
       // 根据路由获取菜单
       menu.value = router
@@ -54,6 +56,7 @@ export const useMenuStore = defineStore(
 
     const addHistoryMenu = (route: RouteLocationNormalized) => {
       if (!route.meta?.menu) return;
+      routeRecord.value = route;
       const historyMe: IMenu = { ...route.meta?.menu, route: route.name };
       const isHas = historyMenu.value.some((item) => item.route === route.name);
       if (!isHas) {
@@ -68,6 +71,7 @@ export const useMenuStore = defineStore(
       menu,
       historyMenu,
       close,
+      routeRecord,
       getMenus,
       addHistoryMenu,
       removeHistoryMenu,
