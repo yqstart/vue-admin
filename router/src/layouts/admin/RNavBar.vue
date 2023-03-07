@@ -8,6 +8,10 @@ const { close } = storeToRefs(useMenuStore());
 const toggleState = () => {
   close.value = !close.value;
 };
+
+const fullScreen = () => {
+  document.documentElement.requestFullscreen();
+};
 </script>
 
 <template>
@@ -29,6 +33,10 @@ const toggleState = () => {
       </el-breadcrumb>
     </div>
     <div class="flex justify-center items-center relative group">
+      <i
+        class="fa-brands fa-bilibili text-xl cursor-pointer mr-3"
+        @click="fullScreen"
+      ></i>
       <img
         :src="useUserStore().info?.avatar"
         class="w-9 h-9 rounded-full object-cover border border-blue-300 p-0.5 cursor-pointer"

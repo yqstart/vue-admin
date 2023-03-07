@@ -35,27 +35,14 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
 </script>
 
 <template>
-  <div class="admin-menu">
-    <div class="menu w-[200px] bg-gray-800" :class="{ close: close }">
+  <div class="admin-menu" :class="{ close: close }">
+    <div class="menu w-[200px] bg-gray-800">
       <div class="logo">
         <i class="fas fa-robot text-fuchsia-300 mr-2 text-2xl"></i>
         <span class="text-xl">vue-admin-cli</span>
       </div>
       <!-- 菜单 -->
       <div class="container">
-        <dl>
-          <dt
-            @click="$router.push('/admin')"
-            :class="{
-              'bg-violet-500 text-white': $route.name === 'admin.home',
-            }"
-          >
-            <section>
-              <i class="mr-2 text-xl fa-solid fa-align-justify"></i>
-              <span class="text-base">dashboard</span>
-            </section>
-          </dt>
-        </dl>
         <dl v-for="(menu, index) in menuStore" :key="index">
           <dt @click="handle(menu)">
             <section>
@@ -69,7 +56,7 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
               ></i>
             </section>
           </dt>
-          <dd v-show="menu.isCheck && !close">
+          <dd :class="!menu.isCheck || close ? 'hidden' : 'block'">
             <div
               v-for="(child, i) in menu.children"
               @click="handle(menu, child)"
@@ -82,7 +69,7 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
         </dl>
       </div>
     </div>
-    <div class="bg block md:hidden"></div>
+    <div class="bg block md:hidden" @click="close = true"></div>
   </div>
 </template>
 
@@ -113,7 +100,9 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
         }
       }
     }
-    &.close {
+  }
+  &.close {
+    .menu {
       @apply w-auto;
       .logo {
         span {
@@ -135,8 +124,7 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
           }
           &:hover {
             dd {
-              display: block !important;
-              @apply absolute left-full w-[200px] bg-gray-700 top-[5px];
+              @apply block absolute left-full w-[200px] bg-gray-700 top-[5px];
             }
           }
         }
@@ -150,11 +138,12 @@ const handle = (pMenu: IMenu, cMenu?: IMenu) => {
     @apply h-screen w-[200px] absolute left-0 top-0 z-50;
     .menu {
       @apply h-full z-50 absolute;
-      &.close {
-      }
     }
     .bg {
       @apply bg-gray-100 opacity-75 w-screen h-screen absolute left-0 top-0;
+    }
+    &.close {
+      @apply hidden;
     }
   }
 }
