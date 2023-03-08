@@ -1,8 +1,19 @@
 {
-  "name": "router",
-  "private": true,
-  "version": "0.0.0",
+  "name": "yqstart-cli",
+  "private": false,
+  "version": "1.0.0",
+  "description": "vue3脚手架",
+  "license": "MIT",
+  "author": "yqstart",
   "type": "module",
+  "main": "dist/assets/index-min.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yqstart/vue-admin.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
