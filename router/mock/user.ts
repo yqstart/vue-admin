@@ -8,13 +8,13 @@ export default [
     response: () => {
       return {
         code: 200,
-        result: {
+        data: {
           name: "vue-admin",
           age: "18",
           avatar: "/image/avatar.png",
           permissions: ["editor_markdown"],
         },
-        type: "success",
+        status: "success",
         message: "测试成功",
       };
     },
@@ -25,10 +25,10 @@ export default [
     response: () => {
       return {
         code: 200,
-        result: {
+        data: {
           token: Random.string(10),
         },
-        type: "success",
+        status: "success",
         message: "登录成功",
       };
     },

@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script>
+import {isLogin} from "@/utils/user";
+import {defineComponent} from "vue";
+
+export default defineComponent({
+  methods: {isLogin}
+})
+
+</script>
 
 <template>
   <div
@@ -15,6 +23,7 @@
       <router-link
         :to="{ name: 'login' }"
         class="common-button common-danger px-4 ml-3"
+        v-if="!isLogin()"
         >用户登录</router-link
       >
     </div>

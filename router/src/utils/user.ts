@@ -6,12 +6,13 @@ import userApi from "@/apis/userApi";
 
 export const login = async (values: any, router: Router) => {
   const {
-    result: { token },
+    data: { token },
   } = await userApi.login(values);
   utils.store.set(CacheEnum.TOKEN_NAME, {
     // expire: 600,
     token,
   });
+  await useUserStore().getUserInfo()
   const routerName = utils.store.get(CacheEnum.REDIRECT_ROUTER_NAME) ?? "home";
   await router.push({ name: routerName });
 };
@@ -20,3 +21,5 @@ export const logout = (router: Router) => {
   router.push("/");
   useUserStore().info = null;
 };
+
+export const isLogin = () => Boolean(utils.store.get(CacheEnum.TOKEN_NAME))

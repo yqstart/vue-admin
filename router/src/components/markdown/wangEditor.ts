@@ -47,7 +47,7 @@ export default class {
         // result 即服务端返回的接口
         console.log("customInsert", result);
         // insertImgFn 可把图片插入到编辑器，传入图片 src ，执行函数即可
-        insertImgFn(result.result.url);
+        insertImgFn(result.data.url);
       },
     };
   }

@@ -7,10 +7,10 @@ export default [
     response: () => {
       return {
         code: 200,
-        result: {
+        data: {
           url: "abc.jpg",
         },
-        type: "success",
+        status: "success",
         message: "测试成功",
       };
     },

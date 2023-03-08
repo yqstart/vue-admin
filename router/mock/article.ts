@@ -8,14 +8,14 @@ export default [
     response: () => {
       return {
         code: 200,
-        result: new Array(20).fill(1).map((a, index) => {
+        data: new Array(20).fill(1).map((a, index) => {
           return {
             id: index,
             title: Random.ctitle(),
             content: Random.cparagraph(),
           };
         }),
-        type: "success",
+        status: "success",
         message: "测试成功",
       };
     },
