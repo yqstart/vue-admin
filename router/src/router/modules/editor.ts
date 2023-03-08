@@ -12,7 +12,7 @@ export default {
   },
   children: [
     {
-      name: "admin.base",
+      name: "editor.base",
       path: "base",
       component: () => import("@/views/editor/base.vue"),
       meta: {
@@ -22,7 +22,17 @@ export default {
       },
     },
     {
-      name: "admin.markdown",
+      name: "editor.wang",
+      path: "wang",
+      component: () => import("@/views/editor/wang.vue"),
+      meta: {
+        menu: {
+          title: "wangEditor",
+        },
+      },
+    },
+    {
+      name: "editor.markdown",
       path: "markdown",
       component: () => import("@/views/editor/markdown.vue"),
       meta: {

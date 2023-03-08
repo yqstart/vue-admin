@@ -3,4 +3,5 @@ interface ResponseResult<T> {
   message: string;
   status: "success" | "error";
   data: T;
+  errno?: number
 }

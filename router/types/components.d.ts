@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     FormRLink: typeof import('./../src/components/form/RLink.vue')['default']
     MarkdownRMarkDown: typeof import('./../src/components/markdown/RMarkDown.vue')['default']
     MarkdownRWangEditor: typeof import('./../src/components/markdown/RWangEditor.vue')['default']
+    MarkdownRWangEditorNext: typeof import('./../src/components/markdown/RWangEditorNext.vue')['default']
     RBreadcrumb: typeof import('./../src/components/RBreadcrumb.vue')['default']
     RNotification: typeof import('./../src/components/RNotification.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

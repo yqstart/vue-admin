@@ -7,6 +7,7 @@ export default [
     response: () => {
       return {
         code: 200,
+        errno: 0,
         data: {
           url: "abc.jpg",
         },
